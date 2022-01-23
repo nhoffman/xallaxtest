@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-23 Sun 13:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python Basics</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="xallaxdad" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="https://sandyuraz.com/styles/org.css">
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Python Basics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org25800df">1. symbols and data types</a>
+<ul>
+<li><a href="#orge8d9d7b">1.1. lists</a></li>
+<li><a href="#org9758a3d">1.2. dicts</a></li>
+</ul>
+</li>
+<li><a href="#orgddb69d0">2. operators</a></li>
+<li><a href="#org8b1c09f">3. variables</a></li>
+<li><a href="#org1b6b33c">4. conditionals (if&#x2026;elif&#x2026;else)</a></li>
+<li><a href="#org3241db5">5. indentation and whitespace</a></li>
+<li><a href="#org0244901">6. iteration (for loops, list comprehensions)</a></li>
+<li><a href="#org5258e0e">7. objects</a></li>
+<li><a href="#org841823f">8. Notes</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org25800df" class="outline-2">
+<h2 id="org25800df"><span class="section-number-2">1</span> symbols and data types</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Numbers can be integers (no decimal) or floats (with a decimal point).
+</p>
+
+<pre class="example">
+1
+</pre>
+
+
+<pre class="example">
+3.1415
+</pre>
+
+
+<p>
+Literal strings and characters have quotes around them.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af875f;">"this is a string"</span>
+</pre>
+</div>
+
+<pre class="example">
+this is a string
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af875f;">'this is a also a string'</span>
+</pre>
+</div>
+
+<pre class="example">
+this is a also a string
+</pre>
+
+
+<p>
+Double quotes and single quotes are more or less the same. This is handy when you want to have a string with quotation marks in it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">s1</span> = <span style="color: #2aa198;">'I said, "Go away"'</span>
+<span style="color: #268bd2; font-weight: bold;">print</span>(s1)
+</pre>
+</div>
+
+<pre class="example">
+I said, "Go away"
+</pre>
+
+
+<p>
+Single or double quoted strings can't span multiple lines, but triple-quoted strings can.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">s2</span> = <span style="color: #2aa198;">"""This</span>
+<span style="color: #2aa198;">spans</span>
+<span style="color: #2aa198;">multiple</span>
+<span style="color: #2aa198;">lines"""</span>
+<span style="color: #268bd2; font-weight: bold;">print</span>(s2)
+</pre>
+</div>
+
+<pre class="example">
+This
+spans
+multiple
+lines
+</pre>
+
+
+<p>
+If you need to put a line break in a regular string, use <code>\n</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'line\nbreak'</span>)
+</pre>
+</div>
+
+<pre class="example">
+line
+break
+</pre>
+
+
+<p>
+Another "escape" character to know about is tab (<code>\t</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'these\tare\ttabs'</span>)
+</pre>
+</div>
+
+<pre class="example">
+these	are	tabs
+</pre>
+
+
+<p>
+Other fundamental data types are lists, tuples, dicts, and sets. Read more about these here: <a href="https://docs.python.org/3/tutorial/datastructures.html">https://docs.python.org/3/tutorial/datastructures.html</a> (really, read this page).
+</p>
+
+<p>
+Lists and dicts are used everywhere, so we'll talk more about them here.
+</p>
+</div>
+
+<div id="outline-container-orge8d9d7b" class="outline-3">
+<h3 id="orge8d9d7b"><span class="section-number-3">1.1</span> lists</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Lists can contain any number of values or variables. Here are two ways to create an empty list:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">[]
+</pre>
+</div>
+
+<pre class="example">
+[]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">list</span>()
+</pre>
+</div>
+
+<pre class="example">
+[]
+</pre>
+
+
+<p>
+The <code>list()</code> function is used to convert other data types into lists. We'll see examples of this later.
+</p>
+
+<p>
+And here's a list with values:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">var</span> = 1
+<span style="color: #8787d7;">mylist</span> = [2, var, <span style="color: #2aa198;">'hithere'</span>, <span style="color: #d75fd7;">None</span>]
+<span style="color: #268bd2; font-weight: bold;">print</span>(mylist)
+</pre>
+</div>
+
+<pre class="example">
+[2, 1, 'hithere', None]
+</pre>
+
+
+<p>
+You can add an element to a list:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mylist.append(100)
+<span style="color: #268bd2; font-weight: bold;">print</span>(mylist)
+</pre>
+</div>
+
+<pre class="example">
+[2, 1, 'hithere', None, 100]
+</pre>
+
+
+<p>
+We'll talk about what <code>.append()</code> is later under "objects".
+</p>
+
+<p>
+Lists can also be combined with a <code>+</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">[1, 2, 3] + [<span style="color: #2aa198;">'hi'</span>, <span style="color: #2aa198;">'there'</span>]
+</pre>
+</div>
+
+<pre class="example">
+[1, 2, 3, 'hi', 'there']
+</pre>
+
+
+<p>
+You can access individual items in a list using square brackets. The first element is accessed using a "0"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">print</span>(mylist[0])
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre>
+
+
+<p>
+Sequences of elements can be accessed by "slicing"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">print</span>(mylist[1:3])
+</pre>
+</div>
+
+<pre class="example">
+[1, 'hithere']
+</pre>
+
+
+<p>
+Notice that the slice extends from the position identified by the first number through the position <b>before</b> the last number.
+</p>
+
+<p>
+This means "elements from the beginning to the position before the number after the colon"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mylist[:3]
+</pre>
+</div>
+
+<pre class="example">
+[2, 1, 'hithere']
+</pre>
+
+
+<p>
+And this means "elements from the position at the number before the colon to the end"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mylist[3:]
+</pre>
+</div>
+
+<pre class="example">
+[None, 100]
+</pre>
+
+
+<p>
+Lists can be indexed using negative numbers, and slices can use negative numbers, too
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">print</span>(mylist)
+<span style="color: #268bd2; font-weight: bold;">print</span>(mylist[-1])
+</pre>
+</div>
+
+<pre class="example">
+[2, 1, 'hithere', None, 100]
+100
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python">mylist[:-1]
+</pre>
+</div>
+
+<pre class="example">
+[2, 1, 'hithere', None]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9758a3d" class="outline-3">
+<h3 id="org9758a3d"><span class="section-number-3">1.2</span> dicts</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Dicts provide a "mapping" from "keys" to "values". Here are two ways to create an empty dicts
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">{}
+</pre>
+</div>
+
+<pre class="example">
+{}
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">dict</span>()
+</pre>
+</div>
+
+<pre class="example">
+{}
+</pre>
+
+
+<p>
+Some examples of creating dicts with values:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">mydict</span> = <span style="color: #268bd2;">dict</span>(cats=2, dogs=3, monkeys=4)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">mydict</span> = {<span style="color: #2aa198;">'cats'</span>: 2, <span style="color: #2aa198;">'dogs'</span>: 3, <span style="color: #2aa198;">'monkeys'</span>: 4}
+</pre>
+</div>
+
+<p>
+The two dicts are the same. Notice that in the first example the keys do not have quotes, but in the second they do. The reason for this will become more clear when we talk about functions.
+</p>
+
+<p>
+'cats', 'dogs', and 'monkeys' are "keys"; 2, 3, and 4 are values. You can get each of these using the methods below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mydict.keys()
+</pre>
+</div>
+
+<pre class="example">
+dict_keys(['cats', 'dogs', 'monkeys'])
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python">mydict.values()
+</pre>
+</div>
+
+<pre class="example">
+dict_values([2, 3, 4])
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python">mydict.items()
+</pre>
+</div>
+
+<pre class="example">
+dict_items([('cats', 2), ('dogs', 3), ('monkeys', 4)])
+</pre>
+
+
+<p>
+Retrieve individual elements using square brackets:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mydict[<span style="color: #2aa198;">'cats'</span>]
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre>
+
+
+<p>
+Square brackets are also used to add items:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">mydict</span>[<span style="color: #2aa198;">'fish'</span>] = 0
+mydict
+</pre>
+</div>
+
+<pre class="example">
+{'cats': 2, 'dogs': 3, 'monkeys': 4, 'fish': 0}
+</pre>
+
+
+<p>
+Trying to access a key that does not exist causes an error
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mydict[<span style="color: #2aa198;">'wild boars'</span>]
+</pre>
+</div>
+
+<pre class="example">
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+KeyError: 'wild boars'
+</pre>
+
+<p>
+The <code>.get()</code> method can be used to avoid the error, and returns None by default if the key is missing.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mydict.get(<span style="color: #2aa198;">'wild boars'</span>)
+</pre>
+</div>
+
+<pre class="example">
+None
+</pre>
+
+
+<p>
+You can also provide a default value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">mydict.get(<span style="color: #2aa198;">'wild boars'</span>, <span style="color: #2aa198;">'many'</span>)
+</pre>
+</div>
+
+<pre class="example">
+many
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgddb69d0" class="outline-2">
+<h2 id="orgddb69d0"><span class="section-number-2">2</span> operators</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Many other symbols are called <b>operators</b>. Many of them should be pretty familiar.
+</p>
+
+<p>
+Some examples are
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">symbol</td>
+<td class="org-left">meaning</td>
+<td class="org-left">example</td>
+</tr>
+
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">add</td>
+<td class="org-left">1 + 1</td>
+</tr>
+
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">multiply</td>
+<td class="org-left">4 * 2</td>
+</tr>
+
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">exponent</td>
+<td class="org-left">2 ^ 2</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You don't need spaces around operators, but the recommended style is to include them.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">1 + 1
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python">2 * 3
+</pre>
+</div>
+
+<pre class="example">
+6
+</pre>
+
+
+<p>
+Operators do different things based on the context. For example, the plus symbol adds numbers, but concatenates (combines) strings:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af875f;">'hi'</span> + <span style="color: #af875f;">'there'</span>
+</pre>
+</div>
+
+<pre class="example">
+hithere
+</pre>
+
+
+<p>
+Sometimes operators can be used to combine different data types.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af875f;">'hi'</span> * 10
+</pre>
+</div>
+
+<pre class="example">
+hihihihihihihihihihi
+</pre>
+
+
+<p>
+And sometimes this causes an error if the operator is not supported.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #af875f;">'hi'</span> / 10
+</pre>
+</div>
+
+<pre class="example">
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8b1c09f" class="outline-2">
+<h2 id="org8b1c09f"><span class="section-number-2">3</span> variables</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+In the example above, <code>s1</code> and <code>s2</code> are "variables". They are assigned values with a single equals sign (we'll talk about double equals signs later).
+</p>
+
+<p>
+Variables can contain
+</p>
+
+<ul class="org-ul">
+<li>uppercase or lowercase letters in any position</li>
+<li>numbers in any position after the first character</li>
+<li>underscores</li>
+</ul>
+
+<p>
+But that's it. No other characters are allowed.
+</p>
+
+<p>
+You can change the value of a variable after you create it
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">var</span> = 1
+<span style="color: #8787d7;">var</span> = <span style="color: #2aa198;">'hello'</span>
+<span style="color: #268bd2; font-weight: bold;">print</span>(var)
+</pre>
+</div>
+
+<pre class="example">
+hello
+</pre>
+
+
+<p>
+It is even possible to update variables in place:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">var</span> = 1
+<span style="color: #8787d7;">var</span> += 2
+<span style="color: #268bd2; font-weight: bold;">print</span>(var)
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+
+
+<p>
+In this example, the <code>+=</code> operator updates <code>var</code> to its current value plus two.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b6b33c" class="outline-2">
+<h2 id="org1b6b33c"><span class="section-number-2">4</span> conditionals (if&#x2026;elif&#x2026;else)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<code>True</code> and <code>False</code> are special symbols called booleans. <code>None</code> is used to represent an empty value.
+</p>
+
+<p>
+These are special because they cannot be assigned to.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #d75fd7;">True</span> = <span style="color: #2aa198;">'hithere'</span>
+</pre>
+</div>
+
+<pre class="example">
+  File "&lt;stdin&gt;", line 1
+    True = 'hithere'
+    ^
+SyntaxError: cannot assign to True
+</pre>
+
+<p>
+Booleans are used to describe whether a condition is true or false. Conditional expressions evaluate to booleans!
+</p>
+
+<p>
+Here's an example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">2 &lt; 3
+</pre>
+</div>
+
+<pre class="example">
+True
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python">2 &gt; 3
+</pre>
+</div>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+Equality is tested using two equals signs (note the difference between this and a single = used for assigning a value to a variable).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">2 == 2
+</pre>
+</div>
+
+<pre class="example">
+True
+</pre>
+
+
+<p>
+Here are some other comparison operators:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">operator</td>
+<td class="org-left">meaning</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;=</td>
+<td class="org-left">greater than or equal</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;=</td>
+<td class="org-left">less than or equal</td>
+</tr>
+
+<tr>
+<td class="org-left">!=</td>
+<td class="org-left">not equal</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note that you can "reverse" the value of a boolean using "not":
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">not</span> <span style="color: #d75fd7;">True</span>
+</pre>
+</div>
+
+<pre class="example">
+False
+</pre>
+
+
+<p>
+A common use for expressions that evaluate to booleans is in conditional "if" statements. If statements have the following form (not real python):
+</p>
+
+<pre class="example">
+if expression:
+    statement
+    another statement
+</pre>
+
+<p>
+Here "expression" is python code that evaluates into True or False as in the examples above. Statements are lines of code that are evaluated if the expression is true. Here are some examples. Note that the line containing the expression must end with a colon, and the lines of code below are indented. We'll talk about that more later.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">if</span> 1 == 1:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'yes, one is equal to one'</span>)
+</pre>
+</div>
+
+<pre class="example">
+yes, one is equal to one
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">if</span> 1 == 2:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+</pre>
+</div>
+
+<p>
+The statement in an "else" clause is always evaluated if the "if" statement is not True:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">if</span> 1 == 2:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">else</span>:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'but this does'</span>)
+</pre>
+</div>
+
+<pre class="example">
+but this does
+</pre>
+
+
+<p>
+Use "elif" to test for other conditions after the if:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">if</span> 1 == 2:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">elif</span> 1 == 3:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">elif</span> 1 == 1:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does print!'</span>)
+<span style="color: #268bd2; font-weight: bold;">else</span>:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'always prints if none of the above are true'</span>)
+</pre>
+</div>
+
+<pre class="example">
+this does print!
+</pre>
+
+
+<p>
+"Empty" values of most data types are "falsy" (evaluate to False in a conditional expression), whereas other values are "truthy" (evaluate to True). A common use for this is to test for empty strings, lists, etc.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">var1</span> = []
+<span style="color: #8787d7;">var2</span> = <span style="color: #2aa198;">''</span>
+<span style="color: #8787d7;">var3</span> = 0
+
+<span style="color: #268bd2; font-weight: bold;">if</span> var1:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">elif</span> var2:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">elif</span> var3:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does not print'</span>)
+<span style="color: #268bd2; font-weight: bold;">else</span>:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'this does print!'</span>)
+</pre>
+</div>
+
+<p>
+You can check if a value is "truthy" using <code>bool()</code>, which converts a statement into a boolean.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">for</span> thing <span style="color: #268bd2; font-weight: bold;">in</span> [<span style="color: #2aa198;">''</span>, 0, 0.0, [], {}, <span style="color: #268bd2;">set</span>()]:
+    <span style="color: #268bd2; font-weight: bold;">print</span>([thing, <span style="color: #268bd2;">type</span>(thing), <span style="color: #268bd2;">bool</span>(thing)])
+</pre>
+</div>
+
+<pre class="example">
+['', &lt;class 'str'&gt;, False]
+[0, &lt;class 'int'&gt;, False]
+[0.0, &lt;class 'float'&gt;, False]
+[[], &lt;class 'list'&gt;, False]
+[{}, &lt;class 'dict'&gt;, False]
+[set(), &lt;class 'set'&gt;, False]
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">for</span> thing <span style="color: #268bd2; font-weight: bold;">in</span> [<span style="color: #2aa198;">'hithere'</span>, 1, 1.0, [2, 3], {<span style="color: #2aa198;">'cats'</span>: 1}, {1, 2, 3}]:
+    <span style="color: #268bd2; font-weight: bold;">print</span>([thing, <span style="color: #268bd2;">type</span>(thing), <span style="color: #268bd2;">bool</span>(thing)])
+</pre>
+</div>
+
+<pre class="example">
+['hithere', &lt;class 'str'&gt;, True]
+[1, &lt;class 'int'&gt;, True]
+[1.0, &lt;class 'float'&gt;, True]
+[[2, 3], &lt;class 'list'&gt;, True]
+[{'cats': 1}, &lt;class 'dict'&gt;, True]
+[{1, 2, 3}, &lt;class 'set'&gt;, True]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3241db5" class="outline-2">
+<h2 id="org3241db5"><span class="section-number-2">5</span> indentation and whitespace</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You might have noticed something new in the example above: some lines are indented from the left margin. Python code is organized using indentation. Indented code can be thought of as being within a "block" started by an unindented line and ending with a colon (:). The lines below are not valid python, but they should give you the general idea:
+</p>
+
+<pre class="example">
+start of code block 1:
+    in code block 1
+    also in code block 1
+start of code block 2:
+    in code block 2
+
+Not in a code block
+</pre>
+
+<p>
+If statements and function definitions are the two most basic examples of code blocks that you may come across, but there are others.
+</p>
+
+<p>
+For now, just follow the rule that each level of indentation is four spaces. Many editors used to write python will insert 4 spaces when you press the tab key at the beginning of a line.  They may also automatically indent to 4 spaces after you press return at the end of a line that starts a code block (like the first line of an if statement).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0244901" class="outline-2">
+<h2 id="org0244901"><span class="section-number-2">6</span> iteration (for loops, list comprehensions)</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+"Iteration" means "doing something multiple times." The most recognizable syntax for iteration is the for loop. For loops look like this (not real python):
+</p>
+
+<pre class="example">
+for variable in sequence_of_variables:
+    some indented code
+    more indented codes
+
+code not in the for loop
+</pre>
+
+<p>
+Like "if&#x2026;elif&#x2026;else" (conditional) code blocks, the first line of a for loop ends with a colon and lines after are indented. Here is a real for loop:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">for</span> var <span style="color: #268bd2; font-weight: bold;">in</span> [1, 2, 3]:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(var)
+</pre>
+</div>
+
+<pre class="example">
+1
+2
+3
+</pre>
+
+
+<p>
+Since it is very common to want to iterate over a sequence of numbers, for loops often use the <code>range()</code> function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">list</span>(<span style="color: #268bd2;">range</span>(10))
+</pre>
+</div>
+
+<pre class="example">
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre>
+
+
+<p>
+(I'll have to explain later why we used <code>list()</code> to show the output of <code>range()</code>)
+</p>
+
+<p>
+The output of <code>range()</code> starts with a 0 by default, but you can change this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">list</span>(<span style="color: #268bd2;">range</span>(1, 10))
+</pre>
+</div>
+
+<pre class="example">
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre>
+
+
+<p>
+<code>range()</code> is very handy for for loops when we want to do something a specified number of times:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">for</span> i <span style="color: #268bd2; font-weight: bold;">in</span> <span style="color: #268bd2;">range</span>(3):
+    <span style="color: #268bd2; font-weight: bold;">print</span>(i)
+</pre>
+</div>
+
+<pre class="example">
+0
+1
+2
+</pre>
+
+
+<p>
+In the example above, note that we are using <code>i</code> as the variable in the first line. The name of the variable doesn't matter: the important thing is that with each iteration of the loop, the variable named in the first line is assigned a different value with each cycle of the loop.
+</p>
+
+<p>
+The <code>sequence_of_items</code> does not need to be numbers:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">for</span> color <span style="color: #268bd2; font-weight: bold;">in</span> [<span style="color: #2aa198;">'red'</span>, <span style="color: #2aa198;">'orange'</span>, <span style="color: #2aa198;">'blue'</span>]:
+    <span style="color: #268bd2; font-weight: bold;">print</span>(color)
+</pre>
+</div>
+
+<pre class="example">
+red
+orange
+blue
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5258e0e" class="outline-2">
+<h2 id="org5258e0e"><span class="section-number-2">7</span> objects</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Everything in python is an <b>object</b>. Objects have properties called <b>attributes</b> (variables associated with an object) and <b>methods</b> (functions associated with the object). These terms aren't terribly important right now but you may see them in documentation. You can "access" an attribute or method using a period character. We already saw an example of a method above when we added an element to a list (<code>mylist.append(100)</code>) and looked up the value of a key in a dict (<code>mydict.get('wild boars', 'many')</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org841823f" class="outline-2">
+<h2 id="org841823f"><span class="section-number-2">8</span> Notes</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>If you want to as a question at the prompt, use <code>input()</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: xallaxdad</p>
+<p class="date">Created: 2022-01-23 Sun 13:35</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

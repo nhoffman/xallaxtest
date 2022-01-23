@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Hello from Xallax</h1>
+
+  Contents:
+  <ul>
+    <li><a href="{{ url_for('hello') }}">hello</li>
+    <li><a href="{{ url_for('page', name='python_basics') }}">Python Basics</li>
+  </ul>
+
+{% endblock %}

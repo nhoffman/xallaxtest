@@ -1,0 +1,523 @@
+#+TITLE: Python Basics
+#+AUTHOR: xallaxdad
+#+HTML_HEAD: <link rel="stylesheet" href="https://sandyuraz.com/styles/org.css">
+#+PROPERTY: header-args:python :session *python-basics* :results value verbatim :exports both
+
+* symbols and data types
+
+Numbers can be integers (no decimal) or floats (with a decimal point).
+
+#+begin_src python :exports results
+1
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :exports results
+3.1415
+#+end_src
+
+#+RESULTS:
+: 3.1415
+
+Literal strings and characters have quotes around them.
+
+#+begin_src python
+"this is a string"
+#+end_src
+
+#+RESULTS:
+: this is a string
+
+#+begin_src python
+'this is a also a string'
+#+end_src
+
+Double quotes and single quotes are more or less the same. This is handy when you want to have a string with quotation marks in it.
+
+#+begin_src python :results output
+s1 = 'I said, "Go away"'
+print(s1)
+#+end_src
+
+Single or double quoted strings can't span multiple lines, but triple-quoted strings can.
+
+#+begin_src python :results output
+s2 = """This
+spans
+multiple
+lines"""
+print(s2)
+#+end_src
+
+If you need to put a line break in a regular string, use =\n=
+
+#+begin_src python :results output
+print('line\nbreak')
+#+end_src
+
+Another "escape" character to know about is tab (=\t=):
+
+#+begin_src python :results output
+print('these\tare\ttabs')
+#+end_src
+
+Other fundamental data types are lists, tuples, dicts, and sets. Read more about these here: https://docs.python.org/3/tutorial/datastructures.html (really, read this page).
+
+Lists and dicts are used everywhere, so we'll talk more about them here.
+
+** lists
+
+Lists can contain any number of values or variables. Here are two ways to create an empty list:
+
+#+begin_src python
+[]
+#+end_src
+
+#+begin_src python
+list()
+#+end_src
+
+The =list()= function is used to convert other data types into lists. We'll see examples of this later.
+
+And here's a list with values:
+
+#+begin_src python  :results output
+var = 1
+mylist = [2, var, 'hithere', None]
+print(mylist)
+#+end_src
+
+You can add an element to a list:
+
+#+begin_src python  :results output
+mylist.append(100)
+print(mylist)
+#+end_src
+
+#+RESULTS:
+: [2, 1, 'hithere', None, 100]
+
+We'll talk about what =.append()= is later under "objects".
+
+Lists can also be combined with a =+=.
+
+#+begin_src python
+[1, 2, 3] + ['hi', 'there']
+#+end_src
+
+You can access individual items in a list using square brackets. The first element is accessed using a "0"
+
+#+begin_src python  :results output
+print(mylist[0])
+#+end_src
+
+Sequences of elements can be accessed by "slicing"
+
+#+begin_src python  :results output
+print(mylist[1:3])
+#+end_src
+
+#+RESULTS:
+: [1, 'hithere']
+
+Notice that the slice extends from the position identified by the first number through the position *before* the last number.
+
+This means "elements from the beginning to the position before the number after the colon"
+
+#+begin_src python
+mylist[:3]
+#+end_src
+
+And this means "elements from the position at the number before the colon to the end"
+
+#+begin_src python
+mylist[3:]
+#+end_src
+
+Lists can be indexed using negative numbers, and slices can use negative numbers, too
+
+#+begin_src python :results output
+print(mylist)
+print(mylist[-1])
+#+end_src
+
+#+begin_src python
+mylist[:-1]
+#+end_src
+
+** dicts
+
+Dicts provide a "mapping" from "keys" to "values". Here are two ways to create an empty dicts
+
+#+begin_src python
+{}
+#+end_src
+
+#+begin_src python
+dict()
+#+end_src
+
+Some examples of creating dicts with values:
+
+#+begin_src python
+mydict = dict(cats=2, dogs=3, monkeys=4)
+#+end_src
+
+#+begin_src python
+mydict = {'cats': 2, 'dogs': 3, 'monkeys': 4}
+#+end_src
+
+The two dicts are the same. Notice that in the first example the keys do not have quotes, but in the second they do. The reason for this will become more clear when we talk about functions.
+
+'cats', 'dogs', and 'monkeys' are "keys"; 2, 3, and 4 are values. You can get each of these using the methods below:
+
+#+begin_src python
+mydict.keys()
+#+end_src
+
+#+begin_src python
+mydict.values()
+#+end_src
+
+#+begin_src python
+mydict.items()
+#+end_src
+
+Retrieve individual elements using square brackets:
+
+#+begin_src python
+mydict['cats']
+#+end_src
+
+Square brackets are also used to add items:
+
+#+begin_src python
+mydict['fish'] = 0
+mydict
+#+end_src
+
+Trying to access a key that does not exist causes an error
+
+#+begin_src python :exports code :eval no
+mydict['wild boars']
+#+end_src
+
+#+begin_src
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'wild boars'
+#+end_src
+
+The =.get()= method can be used to avoid the error, and returns None by default if the key is missing.
+
+#+begin_src python
+mydict.get('wild boars')
+#+end_src
+
+You can also provide a default value.
+
+#+begin_src python
+mydict.get('wild boars', 'many')
+#+end_src
+
+* operators
+
+Many other symbols are called *operators*. Many of them should be pretty familiar.
+
+Some examples are
+
+| symbol | meaning  | example |
+| +      | add      | 1 + 1   |
+| *      | multiply | 4 * 2   |
+| /      | divide   | 4 / 2   |
+| ^      | exponent | 2 ^ 2   |
+
+You don't need spaces around operators, but the recommended style is to include them.
+
+#+begin_src python
+1 + 1
+#+end_src
+
+#+begin_src python
+2 * 3
+#+end_src
+
+Operators do different things based on the context. For example, the plus symbol adds numbers, but concatenates (combines) strings:
+
+#+begin_src python
+'hi' + 'there'
+#+end_src
+
+Sometimes operators can be used to combine different data types.
+
+#+begin_src python
+'hi' * 10
+#+end_src
+
+And sometimes this causes an error if the operator is not supported.
+
+#+begin_src python :exports code :eval no
+'hi' / 10
+#+end_src
+
+#+begin_src
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+#+end_src
+
+* variables
+
+In the example above, =s1= and =s2= are "variables". They are assigned values with a single equals sign (we'll talk about double equals signs later).
+
+Variables can contain
+
+- uppercase or lowercase letters in any position
+- numbers in any position after the first character
+- underscores
+
+But that's it. No other characters are allowed.
+
+You can change the value of a variable after you create it
+
+#+begin_src python :results output
+var = 1
+var = 'hello'
+print(var)
+#+end_src
+
+It is even possible to update variables in place:
+
+#+begin_src python :results output
+var = 1
+var += 2
+print(var)
+#+end_src
+
+In this example, the =+== operator updates =var= to its current value plus two.
+
+* conditionals (if...elif...else)
+
+=True= and =False= are special symbols called booleans. =None= is used to represent an empty value.
+
+These are special because they cannot be assigned to.
+
+#+begin_src python :results output :eval False
+True = 'hithere'
+#+end_src
+
+#+begin_src
+  File "<stdin>", line 1
+    True = 'hithere'
+    ^
+SyntaxError: cannot assign to True
+#+end_src
+
+Booleans are used to describe whether a condition is true or false. Conditional expressions evaluate to booleans!
+
+Here's an example:
+
+#+begin_src python
+2 < 3
+#+end_src
+
+#+RESULTS:
+: True
+
+#+begin_src python
+2 > 3
+#+end_src
+
+#+RESULTS:
+: False
+
+Equality is tested using two equals signs (note the difference between this and a single = used for assigning a value to a variable).
+
+#+begin_src python
+2 == 2
+#+end_src
+
+#+RESULTS:
+: True
+
+Here are some other comparison operators:
+
+| operator | meaning               |
+| >=       | greater than or equal |
+| <=       | less than or equal    |
+| !=       | not equal             |
+
+Note that you can "reverse" the value of a boolean using "not":
+
+#+begin_src python
+not True
+#+end_src
+
+A common use for expressions that evaluate to booleans is in conditional "if" statements. If statements have the following form (not real python):
+
+#+begin_src
+if expression:
+    statement
+    another statement
+#+end_src
+
+Here "expression" is python code that evaluates into True or False as in the examples above. Statements are lines of code that are evaluated if the expression is true. Here are some examples. Note that the line containing the expression must end with a colon, and the lines of code below are indented. We'll talk about that more later.
+
+#+begin_src python  :results output
+if 1 == 1:
+    print('yes, one is equal to one')
+#+end_src
+
+#+begin_src python  :results output
+if 1 == 2:
+    print('this does not print')
+#+end_src
+
+The statement in an "else" clause is always evaluated if the "if" statement is not True:
+
+#+begin_src python  :results output
+if 1 == 2:
+    print('this does not print')
+else:
+    print('but this does')
+#+end_src
+
+Use "elif" to test for other conditions after the if:
+
+#+begin_src python  :results output
+if 1 == 2:
+    print('this does not print')
+elif 1 == 3:
+    print('this does not print')
+elif 1 == 1:
+    print('this does print!')
+else:
+    print('always prints if none of the above are true')
+#+end_src
+
+"Empty" values of most data types are "falsy" (evaluate to False in a conditional expression), whereas other values are "truthy" (evaluate to True). A common use for this is to test for empty strings, lists, etc.
+
+#+begin_src python
+var1 = []
+var2 = ''
+var3 = 0
+
+if var1:
+    print('this does not print')
+elif var2:
+    print('this does not print')
+elif var3:
+    print('this does not print')
+else:
+    print('this does print!')
+#+end_src
+
+You can check if a value is "truthy" using =bool()=, which converts a statement into a boolean.
+
+#+begin_src python :results output
+for thing in ['', 0, 0.0, [], {}, set()]:
+    print([thing, type(thing), bool(thing)])
+#+end_src
+
+#+RESULTS:
+: ['', <class 'str'>, False]
+: [0, <class 'int'>, False]
+: [0.0, <class 'float'>, False]
+: [[], <class 'list'>, False]
+: [{}, <class 'dict'>, False]
+: [set(), <class 'set'>, False]
+
+#+begin_src python :results output
+for thing in ['hithere', 1, 1.0, [2, 3], {'cats': 1}, {1, 2, 3}]:
+    print([thing, type(thing), bool(thing)])
+#+end_src
+
+#+RESULTS:
+: hithere <class 'str'> True
+: 1 <class 'int'> True
+: [2, 3] <class 'list'> True
+: {'cats': 1} <class 'dict'> True
+: {1, 2, 3} <class 'set'> True
+
+* indentation and whitespace
+
+You might have noticed something new in the example above: some lines are indented from the left margin. Python code is organized using indentation. Indented code can be thought of as being within a "block" started by an unindented line and ending with a colon (:). The lines below are not valid python, but they should give you the general idea:
+
+#+begin_src
+start of code block 1:
+    in code block 1
+    also in code block 1
+start of code block 2:
+    in code block 2
+
+Not in a code block
+#+end_src
+
+If statements and function definitions are the two most basic examples of code blocks that you may come across, but there are others.
+
+For now, just follow the rule that each level of indentation is four spaces. Many editors used to write python will insert 4 spaces when you press the tab key at the beginning of a line.  They may also automatically indent to 4 spaces after you press return at the end of a line that starts a code block (like the first line of an if statement).
+
+* iteration (for loops, list comprehensions)
+
+"Iteration" means "doing something multiple times." The most recognizable syntax for iteration is the for loop. For loops look like this (not real python):
+
+#+begin_src
+for variable in sequence_of_variables:
+    some indented code
+    more indented codes
+
+code not in the for loop
+#+end_src
+
+Like "if...elif...else" (conditional) code blocks, the first line of a for loop ends with a colon and lines after are indented. Here is a real for loop:
+
+#+begin_src python :results output
+for var in [1, 2, 3]:
+    print(var)
+#+end_src
+
+Since it is very common to want to iterate over a sequence of numbers, for loops often use the =range()= function.
+
+#+begin_src python
+list(range(10))
+#+end_src
+
+#+RESULTS:
+: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+(I'll have to explain later why we used =list()= to show the output of =range()=)
+
+The output of =range()= starts with a 0 by default, but you can change this:
+
+#+begin_src python
+list(range(1, 10))
+#+end_src
+
+#+RESULTS:
+: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+=range()= is very handy for for loops when we want to do something a specified number of times:
+
+#+begin_src python :results output
+for i in range(3):
+    print(i)
+#+end_src
+
+In the example above, note that we are using =i= as the variable in the first line. The name of the variable doesn't matter: the important thing is that with each iteration of the loop, the variable named in the first line is assigned a different value with each cycle of the loop.
+
+The =sequence_of_items= does not need to be numbers:
+
+#+begin_src python :results output
+for color in ['red', 'orange', 'blue']:
+    print(color)
+#+end_src
+
+* objects
+
+Everything in python is an *object*. Objects have properties called *attributes* (variables associated with an object) and *methods* (functions associated with the object). These terms aren't terribly important right now but you may see them in documentation. You can "access" an attribute or method using a period character. We already saw an example of a method above when we added an element to a list (=mylist.append(100)=) and looked up the value of a key in a dict (=mydict.get('wild boars', 'many')=).
+
+* Notes
+
+- If you want to as a question at the prompt, use =input()=.
+
