@@ -15,6 +15,9 @@ def hello():
 
 @app.route('/page/<name>')
 def page(name):
+    """This route provides a way to display pre-rendered html files. '/page/<name>'
+    serves the contents of a file named "<name>.html"
+
+    """
     with open(f'{name}.html', 'rb') as f:
         return f.read()
-

@@ -513,9 +513,119 @@ for color in ['red', 'orange', 'blue']:
     print(color)
 #+end_src
 
+* functions
+
+At last! Functions. Functions allow you to re-use code. Function are created
+using the =def= keyword, followed by a pair of parentheses and a colon, and then
+one or more indented lines. Here's a simple function that takes no arguments
+(that is, you can't pass any variables into the function).
+
+#+begin_src python
+def say_hello():
+    print('hello!')
+#+end_src
+
+When you want to use (or "call") a function, you must enter the function name
+followed by a pair of parentheses.
+
+#+begin_src python :results output
+say_hello()
+#+end_src
+
+Functions are more useful when you can pass values into them that change their
+behavior. These are called "arguments". These can be "positional" (they are
+recognized based on their position and are required) or "keyword" (must be used
+by providing their names). Here's a function with a single positional argument,
+=name=.
+
+#+begin_src python :results output
+def say_hello(name):
+    print('hello', name)
+
+say_hello('xallax')
+#+end_src
+
+Here's a function with both a positional argument (=name=) and a keyword
+argument (=times=), indicating how many times to repeat the message. Keyword
+arguments can be given default values that will be used if no value is given
+(remember, positional arguments are required).
+
+#+begin_src python :results output
+def say_hello(name, times=1):
+    for i in range(times):
+        print('hello', name)
+
+say_hello('xallax')
+#+end_src
+
+Because we called the function without providing a value for =times= it used the
+default value of 1.
+
+#+begin_src python :results output
+say_hello('xallax', times=3)
+#+end_src
+
+Most functions have a "return value", or a value produced by calling the function. If you do not specify a return value, then =None= is returned. This function prints a message, but does not return anything. Here we are creating a variable =myvar= and assigning the value that is returned by =say_hello()=.
+
+#+begin_src python :results output
+myvar = say_hello('xallax')
+print(myvar)
+#+end_src
+
+If you do want to return a value, use the =return= keyword. If =return= is used,
+the function execution immediately ends and the function returns the value and
+exits.
+
+#+begin_src python :results output
+def say_hello(name, times=1):
+    for i in range(times):
+        print('hello', name)
+
+    return f'I said hello {times} times'
+
+message = say_hello('xallax', 2)
+#+end_src
+
+What happened here? Why don't we see the message? Because it was just assigned
+to the variable =message= and nothing else was done with it.
+
+#+begin_src python :results output
+message = say_hello('xallax', 2)
+print(message)
+#+end_src
+
+There it is.
+
+What's the point of functions? They can be used to run the same code multiple
+times but using different values. Whenever you see yourself writing very similar
+code multiple times, consider creating a function.
+
+One more thing about functions for now: functions can "see" variables created
+outside the function, but variables created /inside/ the function can't be
+seen outside of the function body (the term for where variable can be seen is
+"scope").
+
+#+begin_src python :results output
+x = 'created outside'
+
+def say_something():
+    print(f'the variable x has the value "{x}"')
+    y = 'created inside'
+
+say_something()
+print(y)
+#+end_src
+
+#+begin_src
+NameError: name 'y' is not defined
+#+end_src
+
+In general, don't access variables (especially those that you want to change)
+without passing them in as arguments if you can avoid it.
+
 * objects
 
-Everything in python is an *object*. Objects have properties called *attributes* (variables associated with an object) and *methods* (functions associated with the object). These terms aren't terribly important right now but you may see them in documentation. You can "access" an attribute or method using a period character. We already saw an example of a method above when we added an element to a list (=mylist.append(100)=) and looked up the value of a key in a dict (=mydict.get('wild boars', 'many')=).
+Everything in python is an *object*. Objects have properties called *attributes* (variables associated with an object) and *methods* (functions associated with the object). These terms aren't terribly important right now but you may see them in documentation. You can "access" an attribute or method using a period character. We already saw an example of a method above when we added an element to a list (~mylist.append(100)~) and looked up the value of a key in a dict (~mydict.get('wild boars', 'many')~).
 
 * Notes
 

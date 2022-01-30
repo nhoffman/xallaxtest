@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-23 Sun 13:35 -->
+<!-- 2022-01-29 Sat 21:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Basics</title>
@@ -224,25 +224,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org25800df">1. symbols and data types</a>
+<li><a href="#org091867d">1. symbols and data types</a>
 <ul>
-<li><a href="#orge8d9d7b">1.1. lists</a></li>
-<li><a href="#org9758a3d">1.2. dicts</a></li>
+<li><a href="#org46b548a">1.1. lists</a></li>
+<li><a href="#orga304e4c">1.2. dicts</a></li>
 </ul>
 </li>
-<li><a href="#orgddb69d0">2. operators</a></li>
-<li><a href="#org8b1c09f">3. variables</a></li>
-<li><a href="#org1b6b33c">4. conditionals (if&#x2026;elif&#x2026;else)</a></li>
-<li><a href="#org3241db5">5. indentation and whitespace</a></li>
-<li><a href="#org0244901">6. iteration (for loops, list comprehensions)</a></li>
-<li><a href="#org5258e0e">7. objects</a></li>
-<li><a href="#org841823f">8. Notes</a></li>
+<li><a href="#orgb301407">2. operators</a></li>
+<li><a href="#org94a71e4">3. variables</a></li>
+<li><a href="#org46bdce9">4. conditionals (if&#x2026;elif&#x2026;else)</a></li>
+<li><a href="#org399b508">5. indentation and whitespace</a></li>
+<li><a href="#org0848c52">6. iteration (for loops, list comprehensions)</a></li>
+<li><a href="#orge38dc89">7. functions</a></li>
+<li><a href="#org2054769">8. objects</a></li>
+<li><a href="#orgd348ef9">9. Notes</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org25800df" class="outline-2">
-<h2 id="org25800df"><span class="section-number-2">1</span> symbols and data types</h2>
+<div id="outline-container-org091867d" class="outline-2">
+<h2 id="org091867d"><span class="section-number-2">1</span> symbols and data types</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Numbers can be integers (no decimal) or floats (with a decimal point).
@@ -356,8 +357,8 @@ Lists and dicts are used everywhere, so we'll talk more about them here.
 </p>
 </div>
 
-<div id="outline-container-orge8d9d7b" class="outline-3">
-<h3 id="orge8d9d7b"><span class="section-number-3">1.1</span> lists</h3>
+<div id="outline-container-org46b548a" class="outline-3">
+<h3 id="org46b548a"><span class="section-number-3">1.1</span> lists</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Lists can contain any number of values or variables. Here are two ways to create an empty list:
@@ -523,8 +524,8 @@ Lists can be indexed using negative numbers, and slices can use negative numbers
 </div>
 </div>
 
-<div id="outline-container-org9758a3d" class="outline-3">
-<h3 id="org9758a3d"><span class="section-number-3">1.2</span> dicts</h3>
+<div id="outline-container-orga304e4c" class="outline-3">
+<h3 id="orga304e4c"><span class="section-number-3">1.2</span> dicts</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Dicts provide a "mapping" from "keys" to "values". Here are two ways to create an empty dicts
@@ -676,8 +677,8 @@ many
 </div>
 </div>
 
-<div id="outline-container-orgddb69d0" class="outline-2">
-<h2 id="orgddb69d0"><span class="section-number-2">2</span> operators</h2>
+<div id="outline-container-orgb301407" class="outline-2">
+<h2 id="orgb301407"><span class="section-number-2">2</span> operators</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Many other symbols are called <b>operators</b>. Many of them should be pretty familiar.
@@ -793,8 +794,8 @@ TypeError: unsupported operand type(s) for /: 'str' and 'int'
 </div>
 </div>
 
-<div id="outline-container-org8b1c09f" class="outline-2">
-<h2 id="org8b1c09f"><span class="section-number-2">3</span> variables</h2>
+<div id="outline-container-org94a71e4" class="outline-2">
+<h2 id="org94a71e4"><span class="section-number-2">3</span> variables</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 In the example above, <code>s1</code> and <code>s2</code> are "variables". They are assigned values with a single equals sign (we'll talk about double equals signs later).
@@ -852,8 +853,8 @@ In this example, the <code>+=</code> operator updates <code>var</code> to its cu
 </div>
 </div>
 
-<div id="outline-container-org1b6b33c" class="outline-2">
-<h2 id="org1b6b33c"><span class="section-number-2">4</span> conditionals (if&#x2026;elif&#x2026;else)</h2>
+<div id="outline-container-org46bdce9" class="outline-2">
+<h2 id="org46bdce9"><span class="section-number-2">4</span> conditionals (if&#x2026;elif&#x2026;else)</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 <code>True</code> and <code>False</code> are special symbols called booleans. <code>None</code> is used to represent an empty value.
@@ -1092,8 +1093,8 @@ You can check if a value is "truthy" using <code>bool()</code>, which converts a
 </div>
 </div>
 
-<div id="outline-container-org3241db5" class="outline-2">
-<h2 id="org3241db5"><span class="section-number-2">5</span> indentation and whitespace</h2>
+<div id="outline-container-org399b508" class="outline-2">
+<h2 id="org399b508"><span class="section-number-2">5</span> indentation and whitespace</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 You might have noticed something new in the example above: some lines are indented from the left margin. Python code is organized using indentation. Indented code can be thought of as being within a "block" started by an unindented line and ending with a colon (:). The lines below are not valid python, but they should give you the general idea:
@@ -1119,8 +1120,8 @@ For now, just follow the rule that each level of indentation is four spaces. Man
 </div>
 </div>
 
-<div id="outline-container-org0244901" class="outline-2">
-<h2 id="org0244901"><span class="section-number-2">6</span> iteration (for loops, list comprehensions)</h2>
+<div id="outline-container-org0848c52" class="outline-2">
+<h2 id="org0848c52"><span class="section-number-2">6</span> iteration (for loops, list comprehensions)</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 "Iteration" means "doing something multiple times." The most recognizable syntax for iteration is the for loop. For loops look like this (not real python):
@@ -1222,18 +1223,212 @@ blue
 </div>
 </div>
 
-<div id="outline-container-org5258e0e" class="outline-2">
-<h2 id="org5258e0e"><span class="section-number-2">7</span> objects</h2>
+<div id="outline-container-orge38dc89" class="outline-2">
+<h2 id="orge38dc89"><span class="section-number-2">7</span> functions</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+At last! Functions. Functions allow you to re-use code. Function are created
+using the <code>def</code> keyword, followed by a pair of parentheses and a colon, and then
+one or more indented lines. Here's a simple function that takes no arguments
+(that is, you can't pass any variables into the function).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">def</span> <span style="color: #d75fd7; font-weight: bold;">say_hello</span>():
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'hello!'</span>)
+</pre>
+</div>
+
+<p>
+When you want to use (or "call") a function, you must enter the function name
+followed by a pair of parentheses.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">say_hello()
+</pre>
+</div>
+
+<pre class="example">
+hello!
+</pre>
+
+
+<p>
+Functions are more useful when you can pass values into them that change their
+behavior. These are called "arguments". These can be "positional" (they are
+recognized based on their position and are required) or "keyword" (must be used
+by providing their names). Here's a function with a single positional argument,
+<code>name</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">def</span> <span style="color: #d75fd7; font-weight: bold;">say_hello</span>(name):
+    <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'hello'</span>, name)
+
+say_hello(<span style="color: #2aa198;">'xallax'</span>)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+</pre>
+
+
+<p>
+Here's a function with both a positional argument (<code>name</code>) and a keyword
+argument (<code>times</code>), indicating how many times to repeat the message. Keyword
+arguments can be given default values that will be used if no value is given
+(remember, positional arguments are required).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">def</span> <span style="color: #d75fd7; font-weight: bold;">say_hello</span>(name, times=1):
+    <span style="color: #268bd2; font-weight: bold;">for</span> i <span style="color: #268bd2; font-weight: bold;">in</span> <span style="color: #268bd2;">range</span>(times):
+        <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'hello'</span>, name)
+
+say_hello(<span style="color: #2aa198;">'xallax'</span>)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+</pre>
+
+
+<p>
+Because we called the function without providing a value for <code>times</code> it used the
+default value of 1.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">say_hello(<span style="color: #2aa198;">'xallax'</span>, times=3)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+hello xallax
+hello xallax
+</pre>
+
+
+<p>
+Most functions have a "return value", or a value produced by calling the function. If you do not specify a return value, then <code>None</code> is returned. This function prints a message, but does not return anything. Here we are creating a variable <code>myvar</code> and assigning the value that is returned by <code>say_hello()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">myvar</span> = say_hello(<span style="color: #2aa198;">'xallax'</span>)
+<span style="color: #268bd2; font-weight: bold;">print</span>(myvar)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+None
+</pre>
+
+
+<p>
+If you do want to return a value, use the <code>return</code> keyword. If <code>return</code> is used,
+the function execution immediately ends and the function returns the value and
+exits.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2; font-weight: bold;">def</span> <span style="color: #d75fd7; font-weight: bold;">say_hello</span>(name, times=1):
+    <span style="color: #268bd2; font-weight: bold;">for</span> i <span style="color: #268bd2; font-weight: bold;">in</span> <span style="color: #268bd2;">range</span>(times):
+        <span style="color: #268bd2; font-weight: bold;">print</span>(<span style="color: #2aa198;">'hello'</span>, name)
+
+    <span style="color: #268bd2; font-weight: bold;">return</span> f<span style="color: #2aa198;">'I said hello {times} times'</span>
+
+<span style="color: #8787d7;">message</span> = say_hello(<span style="color: #2aa198;">'xallax'</span>, 2)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+hello xallax
+</pre>
+
+
+<p>
+What happened here? Why don't we see the message? Because it was just assigned
+to the variable <code>message</code> and nothing else was done with it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">message</span> = say_hello(<span style="color: #2aa198;">'xallax'</span>, 2)
+<span style="color: #268bd2; font-weight: bold;">print</span>(message)
+</pre>
+</div>
+
+<pre class="example">
+hello xallax
+hello xallax
+I said hello 2 times
+</pre>
+
+
+<p>
+There it is.
+</p>
+
+<p>
+What's the point of functions? They can be used to run the same code multiple
+times but using different values. Whenever you see yourself writing very similar
+code multiple times, consider creating a function.
+</p>
+
+<p>
+One more thing about functions for now: functions can "see" variables created
+outside the function, but variables created <i>inside</i> the function can't be
+seen outside of the function body (the term for where variable can be seen is
+"scope").
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #8787d7;">x</span> = <span style="color: #2aa198;">'created outside'</span>
+
+<span style="color: #268bd2; font-weight: bold;">def</span> <span style="color: #d75fd7; font-weight: bold;">say_something</span>():
+    <span style="color: #268bd2; font-weight: bold;">print</span>(f<span style="color: #2aa198;">'the variable x has the value "{x}"'</span>)
+    <span style="color: #8787d7;">y</span> = <span style="color: #2aa198;">'created inside'</span>
+
+say_something()
+<span style="color: #268bd2; font-weight: bold;">print</span>(y)
+</pre>
+</div>
+
+<pre class="example">
+the variable x has the value "created outside"
+</pre>
+
+
+<pre class="example">
+NameError: name 'y' is not defined
+</pre>
+
+
+
+<p>
+In general, don't do this! It is much better to pass variables into functions
+using arguments.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2054769" class="outline-2">
+<h2 id="org2054769"><span class="section-number-2">8</span> objects</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 Everything in python is an <b>object</b>. Objects have properties called <b>attributes</b> (variables associated with an object) and <b>methods</b> (functions associated with the object). These terms aren't terribly important right now but you may see them in documentation. You can "access" an attribute or method using a period character. We already saw an example of a method above when we added an element to a list (<code>mylist.append(100)</code>) and looked up the value of a key in a dict (<code>mydict.get('wild boars', 'many')</code>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org841823f" class="outline-2">
-<h2 id="org841823f"><span class="section-number-2">8</span> Notes</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgd348ef9" class="outline-2">
+<h2 id="orgd348ef9"><span class="section-number-2">9</span> Notes</h2>
+<div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>If you want to as a question at the prompt, use <code>input()</code>.</li>
 </ul>
@@ -1242,7 +1437,7 @@ Everything in python is an <b>object</b>. Objects have properties called <b>attr
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: xallaxdad</p>
-<p class="date">Created: 2022-01-23 Sun 13:35</p>
+<p class="date">Created: 2022-01-29 Sat 21:19</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
