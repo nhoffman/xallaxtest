@@ -3,7 +3,10 @@ import configparser
 import pprint
 import textwrap
 
-import dice
+try:
+    from . import actions
+except ImportError:
+    import actions
 
 
 def graphlabel(val, width):
@@ -41,38 +44,12 @@ def read_game(fname):
     return d
 
 
-def combat(win=None, lose=None, ndice=2, to_win=7, **kwargs):
-    rolls = dice.roll_amount(int(ndice))
-    total = sum(rolls)
-    print(f'You must roll {ndice}d6 and get at least {to_win} to win')
-    input('press enter to roll the dice')
-    print('you rolled: ')
-    print(dice.draw_dice(rolls))
-    if total >= int(to_win):
-        print('you won!')
-        return win
-    else:
-        print('you lost...')
-        return lose
-
-
 def choose(name, step):
     print(f'---[ {name} ]---\n', step['_text'])
 
-    if '_action' in step:
-        action = step['_action']
-        return globals()[action](**step)
-
-    choices = {str(i): key for i, key in enumerate(step.keys()) if key != '_text'}
-    while True:
-        for num, choice in choices.items():
-            print(num, choice)
-
-        response = input('choose a number: ')
-        if response in choices:
-            return step[choices[response]]
-        else:
-            print('*** invalid choice, you dimwit! ***')
+    args = {k: v for k, v in step.items() if not k.startswith('_')}
+    action = step.get('_action', 'ask')
+    return getattr(actions, action)(**args)
 
 
 def play(game, step='START'):
