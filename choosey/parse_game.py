@@ -25,29 +25,36 @@ def read_game(fname):
     return d
 
 
-def choose(name, stepdict):
-    print(f'--({name})-->', stepdict['_text'])
+def combat(win=None, lose=None, roll='2d6', to_win=7, **kwargs):
+    print('you rolled a 9, you win!')
+    return win
 
-    choices = {str(i): key for i, key in enumerate(stepdict.keys()) if key != '_text'}
+
+def choose(name, step):
+    print(f'--({name})-->', step['_text'])
+
+    if '_action' in step:
+        action = step['_action']
+        return globals()[action](**step)
+
+    choices = {str(i): key for i, key in enumerate(step.keys()) if key != '_text'}
     while True:
         for num, choice in choices.items():
             print(num, choice)
 
         response = input('choose a number: ')
         if response in choices:
-            return stepdict[choices[response]]
+            return step[choices[response]]
         else:
             print('*** invalid choice, you dimwit! ***')
 
 
-def play(gamedict):
-    pprint.pprint(gamedict)
-    step = 'step1'
+def play(gamedict, step='START'):
     while True:
         step = choose(step, gamedict[step])
 
 
 if __name__ == '__main__':
     game = read_game(sys.argv[1])
-    # play(game)
-    graph(game)
+    play(game, 'prepare for the demon')
+    # graph(game)
