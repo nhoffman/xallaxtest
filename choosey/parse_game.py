@@ -1,15 +1,29 @@
 import sys
 import configparser
 import pprint
+import textwrap
 
 
-def graph(game):
+def graphlabel(val, width):
+    return '\n'.join(textwrap.wrap(val, width=width))
+
+
+def nodename(val):
+    return '_'.join(val.lower().split())
+
+
+def graph(game, label_width=12):
     lines = ['digraph {']
     for step, d in game.items():
-        label = d.pop('_text')
-        lines.append(f'{step} [label="{label}"];')
+        fromname = nodename(step)
+        nodelabel = graphlabel(step, width=label_width)
+        lines.append(f'{fromname} [ label="{nodelabel}" ];')
         for key, val in d.items():
-            lines.append(f'{step} -> {val} [ label="{key}" ];')
+            if val in game:
+                toname = nodename(val)
+                edgelabel = graphlabel(key, width=label_width)
+                lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" '
+                             f'color=grey fontcolor=grey];')
 
     lines.append('}\n')
     return '\n'.join(lines)
