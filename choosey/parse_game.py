@@ -26,12 +26,14 @@ def read_game(fname):
 
 
 def combat(win=None, lose=None, roll='2d6', to_win=7, **kwargs):
+    print(f'You must roll {roll} and get at least {to_win} to win')
+    input('press enter to roll the dice')
     print('you rolled a 9, you win!')
     return win
 
 
 def choose(name, step):
-    print(f'--({name})-->', step['_text'])
+    print(f'---[ {name} ]---\n', step['_text'])
 
     if '_action' in step:
         action = step['_action']
