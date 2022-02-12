@@ -3,6 +3,8 @@ import configparser
 import pprint
 import textwrap
 
+import dice
+
 
 def graphlabel(val, width):
     return '\n'.join(textwrap.wrap(val, width=width))
@@ -39,11 +41,19 @@ def read_game(fname):
     return d
 
 
-def combat(win=None, lose=None, roll='2d6', to_win=7, **kwargs):
-    print(f'You must roll {roll} and get at least {to_win} to win')
+def combat(win=None, lose=None, ndice=2, to_win=7, **kwargs):
+    rolls = dice.roll_amount(int(ndice))
+    total = sum(rolls)
+    print(f'You must roll {ndice}d6 and get at least {to_win} to win')
     input('press enter to roll the dice')
-    print('you rolled a 9, you win!')
-    return win
+    print('you rolled: ')
+    print(dice.draw_dice(rolls))
+    if total >= int(to_win):
+        print('you won!')
+        return win
+    else:
+        print('you lost...')
+        return lose
 
 
 def choose(name, step):
@@ -66,12 +76,13 @@ def choose(name, step):
 
 
 def play(game, step='START'):
-    pprint.pprint(game)
+    #pprint.pprint(game)
     while True:
         step = choose(step, game[step])
 
 
 if __name__ == '__main__':
-    game = read_game(sys.argv[1])
+    game = read_game('games/game1.ini')
+    # play(game)
     play(game, 'prepare for the demon')
     # graph(game)
