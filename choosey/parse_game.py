@@ -11,8 +11,8 @@ def graph(game):
         for key, val in d.items():
             lines.append(f'{step} -> {val} [ label="{key}" ];')
 
-    lines.append('}')
-    print('\n'.join(lines))
+    lines.append('}\n')
+    return '\n'.join(lines)
 
 
 def read_game(fname):
@@ -51,9 +51,10 @@ def choose(name, step):
             print('*** invalid choice, you dimwit! ***')
 
 
-def play(gamedict, step='START'):
+def play(game, step='START'):
+    pprint.pprint(game)
     while True:
-        step = choose(step, gamedict[step])
+        step = choose(step, game[step])
 
 
 if __name__ == '__main__':
