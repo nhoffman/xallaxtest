@@ -9,7 +9,7 @@ except ImportError:
     import actions
 
 
-def graphlabel(val, width):
+def graphlabel(val, width=12):
     return '\n'.join(textwrap.wrap(val, width=width))
 
 
@@ -33,7 +33,7 @@ def get_action_params():
     return params
 
 
-def graph(game, label_width=12):
+def graph(game):
 
     action_params = get_action_params()
 
@@ -41,31 +41,30 @@ def graph(game, label_width=12):
     lines.append('edge [color=grey fontcolor=grey];')
     for step, d in game.items():
         fromname = nodename(step)
-        nodelabel = graphlabel(step, width=label_width)
+        nodelabel = graphlabel(step)
         if '_action' in d:
             nodelabel += '\n[{}]'.format(d['_action'])
 
         lines.append(f'{fromname} [ label="{nodelabel}" ];')
 
         for key, val in d.items():
-            if key.startswith('_'):
-                continue
-
-            edgelabel = graphlabel(key, width=label_width)
             if val == '???':
-                # if one of the options is '???', create a unique dummy node
-                dummy = ''.join(random.choices(string.ascii_letters, k=6))
-                lines.append(f'{dummy} [ label="???" color=red ];')
-                lines.append(f'"{fromname}" -> "{dummy}" [ label="{edgelabel}" ];')
+                # create a unique dummy node for each ???
+                toname = ''.join(random.choices(string.ascii_letters, k=6))
+                lines.append(f'{toname} [ label="???" color=red ];')
             elif val in game:
                 toname = nodename(val)
-                lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" ];')
-            elif key not in action_params:
+            elif not (key in action_params or key.startswith('_')):
+                # assume this is a node without a defined step
                 toname = nodename(val)
-                nodelabel = graphlabel(val, width=label_width)
                 # add another node definition
+                nodelabel = graphlabel(val) + '\n[step not defined]'
                 lines.append(f'{toname} [ label="{nodelabel}" color=red ];')
-                lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" ];')
+            else:
+                continue
+
+            edgelabel = graphlabel(key)
+            lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" ];')
 
     lines.append('}\n')
     return '\n'.join(lines)
