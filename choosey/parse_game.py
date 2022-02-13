@@ -23,7 +23,11 @@ def perform_action(game_data, step_data):
 
 def play(game, step_name='START'):
     # initialize a dictionary to hold the game state
-    game_data = {}
+    game_data = {
+        'health': 10,
+        'strength': 10,
+        'inventory': {'candle', 'sword'},
+    }
     while True:
         step_data = game[step_name]
         print(f'\n---[ {step_name} ]---\n', step_data['_text'])

@@ -32,7 +32,8 @@ def ask(game_data, **kwargs):
             return kwargs[choices[response]]
         elif response == 'i':
             print('character information:')
-            pprint.pprint(game_data)
+            for k, v in game_data.items():
+                print('', k, v)
             input('press return to continue ')
             clear_screen()
         else:
