@@ -55,10 +55,16 @@ def graph(game, label_width=12):
             if val == '???':
                 # if one of the options is '???', create a unique dummy node
                 dummy = ''.join(random.choices(string.ascii_letters, k=6))
-                lines.append(f'{dummy} [ label="???" ];')
+                lines.append(f'{dummy} [ label="???" color=red ];')
                 lines.append(f'"{fromname}" -> "{dummy}" [ label="{edgelabel}" ];')
-            elif val in game or key not in action_params:
+            elif val in game:
                 toname = nodename(val)
+                lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" ];')
+            elif key not in action_params:
+                toname = nodename(val)
+                nodelabel = graphlabel(val, width=label_width)
+                # add another node definition
+                lines.append(f'{toname} [ label="{nodelabel}" color=red ];')
                 lines.append(f'"{fromname}" -> "{toname}" [ label="{edgelabel}" ];')
 
     lines.append('}\n')
