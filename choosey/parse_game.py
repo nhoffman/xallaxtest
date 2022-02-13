@@ -59,7 +59,7 @@ def read_game(fname):
 
 
 def choose(name, step):
-    print(f'---[ {name} ]---\n', step['_text'])
+    print(f'\n---[ {name} ]---\n', step['_text'])
 
     args = {k: v for k, v in step.items() if not k.startswith('_')}
     action = step.get('_action', 'ask')
@@ -67,7 +67,6 @@ def choose(name, step):
 
 
 def play(game, step='START'):
-    #pprint.pprint(game)
     while True:
         step = choose(step, game[step])
 
