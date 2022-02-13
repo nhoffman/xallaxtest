@@ -39,4 +39,4 @@ if args.graph:
     args.graph.write(graph(game))
     sys.exit()
 
-play(game, step=args.start)
+play(game, step_name=args.start)
