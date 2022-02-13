@@ -2,7 +2,8 @@ import sys
 from pathlib import Path
 import argparse
 
-from choosey.parse_game import read_game, play, graph
+from choosey.parse_game import read_game, play
+from choosey.graph import graph
 
 parser = argparse.ArgumentParser(
     description=__doc__,
