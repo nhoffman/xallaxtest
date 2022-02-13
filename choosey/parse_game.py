@@ -25,7 +25,7 @@ def play(game, step_name='START'):
     # initialize a dictionary to hold the game state
     game_data = {
         'health': 10,
-        'strength': 10,
+        'strength': 2,
         'inventory': {'candle', 'sword'},
     }
     while True:

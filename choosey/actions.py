@@ -43,15 +43,17 @@ def ask(game_data, **kwargs):
 def combat(game_data, win=None, lose=None, ndice=2, to_win=7, **kwargs):
     rolls = dice.roll_amount(int(ndice))
     total = sum(rolls)
-    print(f'You must roll {ndice}d6 and get at least {to_win} to win')
+    print(f'You must roll {ndice}d6 + your strength ({game_data["strength"]}) and get at least {to_win} to win')
     input('Press enter to roll the dice. ')
     print('you rolled: ')
     print(dice.draw_dice(rolls))
-    if total >= int(to_win):
+    if total + game_data['strength'] >= int(to_win):
         print('you won!')
+        game_data['strength'] += 1
         return win
     else:
         print('you lost...')
+        game_data['strength'] -= 1
         return lose
 
 
