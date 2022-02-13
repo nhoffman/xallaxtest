@@ -18,7 +18,7 @@ def read_game(fname):
 def perform_action(game_data, step_data):
     args = {k: v for k, v in step_data.items() if not k.startswith('_')}
     action = step_data.get('_action', 'ask')
-    return getattr(actions, action)(**args)
+    return getattr(actions, action)(game_data, **args)
 
 
 def play(game, step_name='START'):
