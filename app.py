@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
+import dice
 app = Flask(__name__)
 
 
@@ -11,6 +12,25 @@ def index():
 @app.route('/hello')
 def hello():
     return render_template('hello.html')
+
+
+@app.route('/attack')
+def attack():
+    command = request.args.get('command')
+    
+    # command = '10d6+5'
+    if command == None:
+        message = 'There was no command, try again.'
+    else:
+        command = command.replace('plus', '+')
+        rolled, modifier = dice.roll_attack(command)
+        message = f'{rolled}+{modifier} = {rolled + modifier}'
+        print(message)
+    
+    return render_template(
+        'attack.html',
+        message=message)
+
 
 
 @app.route('/page/<name>')
