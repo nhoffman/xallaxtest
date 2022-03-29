@@ -57,3 +57,22 @@ def combat(game_data, win=None, lose=None, ndice=2, to_win=7, **kwargs):
         return lose
 
 
+
+
+
+def roll(game_data, succeed=None, fail=None, ndice=2, to_win=7, **kwargs):
+    rolls = dice.roll_amount(int(ndice))
+    total = sum(rolls)
+    print(f'You must roll {ndice}d6  and get at least {to_win} to win')
+    input('Press enter to roll the dice. ')
+    print('you rolled: ')
+    print(dice.draw_dice(rolls))
+    if total >= int(to_win):
+        print('you succeeded!')
+        return win
+    else:
+        print('you lost...')
+        return lose
+
+
+#{game_data["strength"]}

@@ -16,20 +16,24 @@ def hello():
 
 @app.route('/attack')
 def attack():
-    command = request.args.get('command')
+    command = request.args.get('roll')
+    modifier = int(request.args.get('modifier', '0'))
+
+    name = request.args.get("name")
+    car = request.args.get("cars")
     
-    # command = '10d6+5'
     if command == None:
         message = 'There was no command, try again.'
     else:
-        command = command.replace('plus', '+')
-        rolled, modifier = dice.roll_attack(command)
+        rolled = dice.roll_attack(command)
         message = f'{rolled}+{modifier} = {rolled + modifier}'
         print(message)
     
     return render_template(
         'attack.html',
-        message=message)
+        message=message,
+        name=name,
+        car=car)
 
 
 

@@ -9,15 +9,9 @@ def roll(times=1, sides=6):
 
 
 def roll_attack(command='1d6'):
-    split_command = command.split('+')
-    times, sides = split_command[0].split('d')
-    rolled = (sum(roll(int(times), int(sides))))
-
-    if len(split_command) == 2:
-        modifier = int(split_command[1])
-    else:
-        modifier = 0
-    return rolled, modifier
+    times, sides = command.split('d')
+    rolled = sum(roll(int(times), int(sides)))
+    return rolled
 
 
 if __name__ == '__main__':
