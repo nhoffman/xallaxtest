@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import argparse
+import subprocess
 
 from choosey.parse_game import read_game, play
 from choosey.graph import graph
@@ -9,8 +10,8 @@ parser = argparse.ArgumentParser(
     description=__doc__,
     formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('--game', help="choose a game")
-parser.add_argument('--graph', type=argparse.FileType('w'),
-                    help="write a representation of the game as a graphviz graph and exit")
+parser.add_argument('--graph', action='store_true', default=False,
+                    help="make a cool graphviz graph (svg) and open in Safari")
 parser.add_argument('-s', '--start', default='START',
                     help="name of the step to start on (default %(default)s)")
 
@@ -36,7 +37,17 @@ else:
 game = read_game(fname)
 
 if args.graph:
-    args.graph.write(graph(game))
+    stem = str(Path(fname).stem)
+    dotfile = stem + '.dot'
+    svgfile = f'{stem}.svg'
+
+    with open(dotfile, 'w') as f:
+        f.write(graph(game))
+
+    subprocess.run(['dot', '-Tsvg', dotfile, f'-o{svgfile}'])
+    print(f'wrote {svgfile}')
+    subprocess.run(['open', '-a', 'Safari.app', svgfile])
+
     sys.exit()
 
 play(game, step_name=args.start)
