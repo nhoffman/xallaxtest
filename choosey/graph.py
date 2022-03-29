@@ -9,8 +9,8 @@ except ImportError:
     import actions
 
 
-def graphlabel(val, width=12):
-    return '\n'.join(textwrap.wrap(val, width=width))
+def graphlabel(val, width=15):
+    return '\n'.join(textwrap.wrap(val, width=width)).replace('"', "'")
 
 
 def nodename(val):
